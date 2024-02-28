@@ -1,0 +1,14 @@
+{
+  "entities": [
+    {
+      "id": "2",
+      "name": "Updated Entity 2",
+      "description": "Updated Description for Entity 2"
+    },
+    {
+      "id": "3",
+      "name": "Entity 3",
+      "description": "Description for Entity 3"
+    }
+  ]
+}
