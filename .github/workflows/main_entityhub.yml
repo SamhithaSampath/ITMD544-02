@@ -15,10 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: main  # Specify the branch to checkout
 
-      - name: Set up Node.js version
+      - name: Set up Node.js
         run: |
           sudo apt-get install -y nodejs
           sudo apt-get install -y npm
@@ -26,6 +24,7 @@ jobs:
           sudo n 20.11.0
           sudo ln -sf /usr/local/n/versions/node/20.11.0/bin/node /usr/bin/node
           sudo ln -sf /usr/local/n/versions/node/20.11.0/bin/npm /usr/bin/npm
+          sudo ln -sf /usr/local/n/versions/node/20.11.0/bin/n /usr/bin/n
 
       - name: npm install, build, and test
         run: |
@@ -60,6 +59,7 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_66D79450107D4AF49EBAC59F32B0B252 }}
           package: .
+
 
 
 
