@@ -10,15 +10,18 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
       - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.11.0'  # Specify the version you want to use
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+          nvm install 20.11.0
+          nvm use 20.11.0
+
+      - uses: actions/checkout@v4
 
       - name: npm install, build, and test
         run: |
@@ -53,6 +56,7 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_66D79450107D4AF49EBAC59F32B0B252 }}
           package: .
+
 
 
 
