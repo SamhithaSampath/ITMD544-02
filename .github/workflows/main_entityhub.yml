@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '20.11.0'  # Specify the version you want to use
 
       - name: npm install, build, and test
         run: |
@@ -45,11 +45,6 @@ jobs:
         with:
           name: node-app
 
-      - name: 'Set up Node.js version for deployment'
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14.x'
-
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
@@ -58,6 +53,7 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_66D79450107D4AF49EBAC59F32B0B252 }}
           package: .
+
 
 
 
